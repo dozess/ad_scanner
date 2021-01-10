@@ -18,13 +18,16 @@ from bs4 import BeautifulSoup
 import pymongo
 from bson.objectid import ObjectId
 
+import cv2
 import pyzbar.pyzbar as pyzbar
 from PIL import Image as im
 
+
 import subprocess
 
-#configuration
-#TODO: Set configuration ouside script
+
+# configuration
+# TODO: Set configuration ouside script
 CONF_MONGODB = "mongodb://192.168.1.200:27017/"
 CONF_MDB_COLECTION = "skelbimai"
 CONF_IMAGE_PATH = '/mnt/ad_keeper/image_archyve/'
@@ -35,9 +38,6 @@ CONF_PROFILES_VPN = '/mnt/ad_keeper/euvpn/'
 CONF_AUTH_VPN = '/mnt/ad_keeper/pass.txt'
 conf_path = '/mnt/ad_keeper/test_udp.ovpn'
 auth_path = '/mnt/ad_keeper/vpn/pass.txt'
-
-#image_library = 'F:\\image_archyve'
-#delay = 20 #maksimalus laukimas  s tarp skelbimu atidarymo
 
 
 #setup celery
@@ -269,7 +269,6 @@ def download_ad(new_ad):
 @app.task
 def get_barcodes(db_id):
 
-
     dbclient = pymongo.MongoClient(CONF_MONGODB)
     db = dbclient[CONF_MDB_COLECTION]
 
@@ -279,8 +278,11 @@ def get_barcodes(db_id):
     for photo in doc['photos']:
         file_name = join(CONF_IMAGE_PATH, photo['local_file'])
         if isfile(file_name):
-            original_image = im.open(file_name)
-            objects = pyzbar.decode(original_image)
+            # original_image = im.open(file_name)
+            original_image = cv2.imread(file_name, cv2.COLOR_RGB2GRAY)
+            blur = cv2.GaussianBlur(original_image, (5, 5), 0)
+            ret, th = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            objects = pyzbar.decode(th)
             if objects:
                 photo['barcode'] = []
                 for obj in objects:
