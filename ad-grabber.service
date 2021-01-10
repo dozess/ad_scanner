@@ -1,0 +1,15 @@
+
+[Unit]
+Description=QR Scanner API
+
+[Service]
+Type=forking
+WorkingDirectory=/home/pi/celery-worker/
+ExecStart=/home/pi/celery-worker/venv/bin/celery -A tasks multi start worker --pidfile=celery.pid -l info -c 1
+ExecStop=/home/pi/celery-worker/venv/bin/celery multi stopwait --pidfile=celery.pid
+ExecReload=/home/pi/celery-worker/venv/bin/celery -A tasks multi restart worker --pidfile=celery.pid -l info -c 1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
