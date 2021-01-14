@@ -62,6 +62,9 @@ def create_folder(path):
 
 def download_ad(new_ad):
     print('Start procedure')
+    k = subprocess.Popen(['sudo', 'killall', 'openvpn'])
+    k = subprocess.Popen(['sudo', 'killall', 'chromedriver'])
+
     #open VPN conection
     sISO = ''
     if CONF_INSCRIPT_VPN:
