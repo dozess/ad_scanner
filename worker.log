@@ -1,0 +1,80 @@
+[2021-01-11 00:30:15,161: INFO/MainProcess] Connected to amqp://saulius:**@192.168.1.21:5672//
+[2021-01-11 00:30:15,264: INFO/MainProcess] mingle: searching for neighbors
+[2021-01-11 00:30:16,422: INFO/MainProcess] mingle: all alone
+[2021-01-11 00:30:16,515: INFO/MainProcess] worker@pi2 ready.
+[2021-01-11 00:31:49,121: INFO/MainProcess] Received task: tasks.get_ad_by_id[5dffb3f7-84ab-4f74-9f2a-1039b94d90ef]  
+[2021-01-11 00:31:49,135: INFO/MainProcess] Received task: tasks.get_ad_by_id[2650f199-c7d4-4be9-b40c-9fbbbcfc8994]  
+[2021-01-11 00:31:49,155: INFO/MainProcess] Received task: tasks.get_ad_by_id[123c3fa6-f41b-40b7-8c91-04ddba5a092a]  
+[2021-01-11 00:31:49,171: INFO/MainProcess] Received task: tasks.get_ad_by_id[48ecdb00-7089-4d6a-a2b6-f4e6af0ea823]  
+[2021-01-11 00:31:49,188: INFO/MainProcess] Received task: tasks.get_ad_by_id[041b7e87-2616-457a-95b5-58e81dc13b91]  
+[2021-01-11 00:32:52,766: ERROR/MainProcess] Process 'ForkPoolWorker-1' pid:19967 exited with 'signal 15 (SIGTERM)'
+[2021-01-11 00:32:52,811: ERROR/MainProcess] Task handler raised error: WorkerLostError('Worker exited prematurely: signal 15 (SIGTERM).')
+Traceback (most recent call last):
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/worker.py", line 205, in start
+    self.blueprint.start(self)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 369, in start
+    return self.obj.start()
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/kombu/asynchronous/hub.py", line 308, in create_loop
+    events = poll(poll_timeout)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/kombu/utils/eventio.py", line 84, in poll
+    return self._epoll.poll(timeout if timeout is not None else -1)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/apps/worker.py", line 284, in _handle_request
+    raise exc(exitcode)
+celery.exceptions.WorkerShutdown: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/billiard/pool.py", line 1267, in mark_as_worker_lost
+    human_status(exitcode)),
+billiard.exceptions.WorkerLostError: Worker exited prematurely: signal 15 (SIGTERM).
+[2021-01-11 00:48:52,479: INFO/MainProcess] Connected to amqp://saulius:**@192.168.1.21:5672//
+[2021-01-11 00:48:52,583: INFO/MainProcess] mingle: searching for neighbors
+[2021-01-11 00:48:53,735: INFO/MainProcess] mingle: all alone
+[2021-01-11 00:48:53,821: INFO/MainProcess] worker@pi2 ready.
+[2021-01-11 00:48:53,826: INFO/MainProcess] Received task: tasks.get_ad_by_id[2650f199-c7d4-4be9-b40c-9fbbbcfc8994]  
+[2021-01-11 00:48:53,831: INFO/MainProcess] Received task: tasks.get_ad_by_id[123c3fa6-f41b-40b7-8c91-04ddba5a092a]  
+[2021-01-11 00:48:53,835: INFO/MainProcess] Received task: tasks.get_ad_by_id[48ecdb00-7089-4d6a-a2b6-f4e6af0ea823]  
+[2021-01-11 00:48:53,838: INFO/MainProcess] Received task: tasks.get_ad_by_id[041b7e87-2616-457a-95b5-58e81dc13b91]  
+[2021-01-11 00:48:53,949: INFO/MainProcess] Received task: tasks.get_ad_by_id[13be7972-8242-48b2-a51a-01f986ba6de6]  
+[2021-01-11 00:49:49,153: ERROR/MainProcess] Process 'ForkPoolWorker-1' pid:20153 exited with 'signal 15 (SIGTERM)'
+[2021-01-11 00:49:49,180: ERROR/MainProcess] Task handler raised error: WorkerLostError('Worker exited prematurely: signal 15 (SIGTERM).')
+Traceback (most recent call last):
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/worker.py", line 205, in start
+    self.blueprint.start(self)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 369, in start
+    return self.obj.start()
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/consumer/consumer.py", line 599, in start
+    c.loop(*c.loop_args())
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/worker/loops.py", line 83, in asynloop
+    next(loop)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/kombu/asynchronous/hub.py", line 308, in create_loop
+    events = poll(poll_timeout)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/kombu/utils/eventio.py", line 84, in poll
+    return self._epoll.poll(timeout if timeout is not None else -1)
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/celery/apps/worker.py", line 284, in _handle_request
+    raise exc(exitcode)
+celery.exceptions.WorkerShutdown: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/celery-worker/venv/lib/python3.7/site-packages/billiard/pool.py", line 1267, in mark_as_worker_lost
+    human_status(exitcode)),
+billiard.exceptions.WorkerLostError: Worker exited prematurely: signal 15 (SIGTERM).
